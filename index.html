@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ガチャティルト｜確率と期待値の可視化ツール</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="logo-area">
+      <div class="logo-mark">GT</div>
+      <div class="logo-text">
+        <h1>ガチャティルト</h1>
+        <p class="subtitle">確率と期待値の可視化ツール</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- 入力フォーム -->
+  <section class="panel form-panel">
+    <h2>ガチャ確率計算</h2>
+
+    <div class="form-group">
+      <label for="rate">排出率（％）</label>
+      <input id="rate" type="number" inputmode="decimal" placeholder="例：1.8">
+    </div>
+
+    <div class="form-group">
+      <label for="tries">回す回数</label>
+      <input id="tries" type="number" inputmode="numeric" placeholder="例：100">
+    </div>
+
+    <button class="btn-primary">計算</button>
+  </section>
+
+  <!-- 結果 -->
+  <section class="panel result-panel">
+    <h2>結果</h2>
+    <div class="result-grid">
+      <div class="result-item">
+        <span class="result-label">当たる確率</span>
+        <span class="result-value" id="prob-hit">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">当たらない確率</span>
+        <span class="result-value" id="prob-miss">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">期待値（平均何連で出るか）</span>
+        <span class="result-value" id="exp-pulls">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">期待値（この回数だと何体出るか）</span>
+        <span class="result-value" id="exp-count">-</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 折りたたみ式の確率表 -->
+  <section class="panel result-multi">
+    <button class="toggle-btn">
+      <span>当たり確率一覧（1体以上 & 1〜20体）</span>
+      <span class="arrow">▼</span>
+    </button>
+
+    <div class="toggle-content" id="toggle-content">
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>当たり数</th>
+            <th>確率</th>
+          </tr>
+        </thead>
+        <tbody id="multi-results"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 確率分布グラフ（個数 × 回数） -->
+  <section class="panel chart-panel">
+    <h2>確率分布グラフ（回数 × 個数）</h2>
+    <canvas id="chart"></canvas>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-title">ガチャティルト</p>
+<nav class="footer-nav">
+  <a href="pages/terms.html">利用規約</a>
+  <a href="pages/privacy.html">プライバシーポリシー</a>
+  <a href="pages/contact.html">お問い合わせ</a>
+</nav>
+    <p class="copyright">© ガチャティルト</p>
+  </div>
+</footer>
+
+<!-- Chart.js 読み込み -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
